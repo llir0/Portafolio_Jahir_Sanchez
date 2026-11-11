@@ -1,0 +1,483 @@
+/* css/style.css - Estilos principales del portafolio */
+
+:root {
+  --bg-primary: #180f0a;
+  --bg-secondary: #271912;
+  --bg-card: rgba(28, 17, 11, 0.92);
+  --border-color: rgba(245, 158, 11, 0.2);
+  --accent-amber: #f59e0b;
+  --accent-cyan: #06b6d4;
+  --accent-emerald: #10b981;
+  --text-main: #fef3c7;
+  --text-muted: #d97706;
+  --font-sans: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Tiny5', monospace;
+  --font-tiny5: 'Tiny5', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: #f8fafc;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Enforce Open Sans & Tiny5 Duo across all elements */
+.font-sans {
+  font-family: var(--font-sans) !important;
+}
+
+.font-mono, .font-tiny5 {
+  font-family: var(--font-mono) !important;
+  letter-spacing: 0.04em;
+}
+
+/* Contenedor del lienzo 3D Three.js */
+#canvas-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
+#canvas-container canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Capa de HUD de la Interfaz del Juego */
+.game-hud-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.hud-interactive {
+  pointer-events: auto;
+}
+
+/* Glassmorphism cálido otoñal para elementos del HUD */
+.hud-glass {
+  background: rgba(28, 17, 11, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.65), 0 0 20px 0 rgba(245, 158, 11, 0.12);
+}
+
+/* Tarjeta flotante de detalle de proyecto */
+#hud-project-card {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 440px;
+  max-width: calc(100vw - 32px);
+  max-height: 86vh;
+  z-index: 35;
+  transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#hud-project-card.hidden-hud-card {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%) translateX(160px) scale(0.92);
+}
+
+#hud-project-card.visible-hud-card {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(-50%) translateX(0) scale(1);
+}
+
+#hud-card-body-content {
+  overflow-y: auto;
+  padding-right: 6px;
+  max-height: calc(86vh - 60px);
+}
+
+/* Custom Scrollbar cálido */
+#hud-card-body-content::-webkit-scrollbar {
+  width: 6px;
+}
+#hud-card-body-content::-webkit-scrollbar-track {
+  background: rgba(20, 10, 5, 0.6);
+  border-radius: 4px;
+}
+#hud-card-body-content::-webkit-scrollbar-thumb {
+  background: #b45309;
+  border-radius: 4px;
+}
+#hud-card-body-content::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}
+
+/* Barra de Viaje Rápido Lineal (Autopiloto) */
+.fast-travel-bar {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  scrollbar-width: none;
+}
+.fast-travel-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.fast-travel-btn {
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  background: rgba(45, 26, 14, 0.85);
+  color: #fef3c7;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.fast-travel-btn:hover {
+  background: rgba(245, 158, 11, 0.3);
+  color: #ffffff;
+  border-color: #f59e0b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+/* Minimapa / Radar */
+#minimap-canvas {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 2px solid rgba(245, 158, 11, 0.45);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+  display: block;
+}
+
+/* Controles Táctiles para Móviles / Tablets */
+.touch-controls {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .touch-controls {
+    display: flex;
+  }
+  .controls-helper-box {
+    display: none;
+  }
+}
+
+.touch-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(45, 26, 14, 0.9);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #fef3c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-family: var(--font-mono);
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.touch-btn:active {
+  background: rgba(245, 158, 11, 0.5);
+  transform: scale(0.92);
+}
+
+/* Modal o Vista de CV / Agenda Tradicional */
+#classic-view-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: radial-gradient(circle at 50% 10%, #1e130c 0%, #0c0f17 100%);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#classic-view-overlay::-webkit-scrollbar {
+  display: none;
+}
+
+#classic-view-overlay.hidden-overlay {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#classic-view-overlay.visible-overlay {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.print-only {
+  display: none !important;
+}
+
+/* Reglas de impresión para generar PDF ejecutivo profesional */
+@page {
+  size: letter;
+  margin: 10mm 12mm;
+}
+
+@media print {
+  html, body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    overflow: visible !important;
+    height: auto !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #canvas-container,
+  .game-hud-layer,
+  #hud-project-card,
+  #game-container,
+  #hud,
+  .no-print,
+  button,
+  .touch-controls {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+    color: #334155 !important;
+    font-size: 7.5pt !important;
+    font-weight: 600 !important;
+    margin-top: 2px !important;
+  }
+
+  #classic-view-overlay,
+  #classic-view-overlay.hidden-overlay,
+  #classic-view-overlay.visible-overlay {
+    display: block !important;
+    opacity: 1 !important;
+    position: static !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Tipografía ejecutiva Open Sans limpia en todo el PDF (sin fuente pixelada Tiny5) */
+  #classic-view-overlay,
+  #classic-view-overlay * {
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    letter-spacing: normal !important;
+  }
+
+  #classic-view-overlay > div {
+    max-width: 100% !important;
+  }
+
+  #classic-view-overlay > div.space-y-8 > * + * {
+    margin-top: 12px !important;
+  }
+
+  #classic-view-overlay .space-y-6 > * + * {
+    margin-top: 8px !important;
+  }
+
+  #classic-view-overlay .space-y-4 > * + * {
+    margin-top: 8px !important;
+  }
+
+  #classic-view-overlay .space-y-3\.5 > * + *,
+  #classic-view-overlay .space-y-3 > * + * {
+    margin-top: 6px !important;
+  }
+
+  #classic-view-overlay .gap-4 {
+    gap: 8px !important;
+  }
+
+  #classic-view-overlay .gap-3 {
+    gap: 6px !important;
+  }
+
+  #classic-view-overlay .hud-glass {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    color: #0f172a !important;
+    padding: 9px 12px !important;
+    border-radius: 6px !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  #classic-view-overlay h1 {
+    font-size: 18pt !important;
+    line-height: 1.15 !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+  }
+
+  #classic-view-overlay h2 {
+    font-size: 10.5pt !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: #0f172a !important;
+    border-bottom: 1.5px solid #0f172a !important;
+    padding-bottom: 3px !important;
+    margin-bottom: 4px !important;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  #classic-view-overlay h3 {
+    font-size: 10pt !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+    color: #0f172a !important;
+  }
+
+  #classic-view-overlay p,
+  #classic-view-overlay span,
+  #classic-view-overlay a,
+  #classic-view-overlay strong {
+    line-height: 1.38 !important;
+  }
+
+  #classic-view-overlay .text-xs {
+    font-size: 8.5pt !important;
+  }
+
+  #classic-view-overlay .text-sm {
+    font-size: 9pt !important;
+  }
+
+  /* Mantener distribución en columnas ordenada en papel */
+  #classic-view-overlay .md\:flex-row {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+  }
+
+  #classic-view-overlay .sm\:grid-cols-4,
+  #classic-view-overlay .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  #classic-view-overlay .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  #classic-view-overlay .sm\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  #classic-view-overlay .md\:col-span-2 {
+    grid-column: span 2 / span 2 !important;
+  }
+
+  #classic-view-overlay .md\:grid-cols-1 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  /* Contraste sobrio y profesional sobre fondo blanco */
+  #classic-view-overlay .text-white,
+  #classic-view-overlay .text-slate-100,
+  #classic-view-overlay .text-slate-200 {
+    color: #0f172a !important;
+  }
+
+  #classic-view-overlay .text-slate-300,
+  #classic-view-overlay .text-slate-400 {
+    color: #334155 !important;
+  }
+
+  #classic-view-overlay .text-amber-300,
+  #classic-view-overlay .text-amber-400,
+  #classic-view-overlay [class*="text-amber-300"] {
+    color: #92400e !important;
+  }
+
+  #classic-view-overlay .text-cyan-300,
+  #classic-view-overlay .text-cyan-400 {
+    color: #0e7490 !important;
+  }
+
+  #classic-view-overlay .text-emerald-300,
+  #classic-view-overlay .text-emerald-400 {
+    color: #065f46 !important;
+  }
+
+  #classic-view-overlay .text-blue-300,
+  #classic-view-overlay .text-blue-400 {
+    color: #1e40af !important;
+  }
+
+  #classic-view-overlay .text-purple-300,
+  #classic-view-overlay .text-purple-400 {
+    color: #5b21b6 !important;
+  }
+
+  #classic-view-overlay .text-rose-300,
+  #classic-view-overlay .text-rose-400 {
+    color: #9f1239 !important;
+  }
+
+  #classic-view-overlay [class*="bg-slate-"],
+  #classic-view-overlay [class*="bg-amber-950"],
+  #classic-view-overlay [class*="bg-emerald-500"],
+  #classic-view-overlay [class*="bg-emerald-600"],
+  #classic-view-overlay [class*="bg-blue-500"],
+  #classic-view-overlay [class*="bg-blue-600"],
+  #classic-view-overlay [class*="bg-amber-500"],
+  #classic-view-overlay [class*="bg-purple-500"],
+  #classic-view-overlay [class*="bg-rose-500"] {
+    background: #f8fafc !important;
+    border-color: #cbd5e1 !important;
+    color: #0f172a !important;
+    box-shadow: none !important;
+  }
+
+  #classic-view-overlay .border-slate-800,
+  #classic-view-overlay .border-slate-700 {
+    border-color: #cbd5e1 !important;
+  }
+
+  #classic-view-overlay a {
+    text-decoration: none !important;
+  }
+}

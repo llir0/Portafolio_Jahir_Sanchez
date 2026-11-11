@@ -1,14 +1,14 @@
 # Jahir Sánchez Centella — Portafolio
 
-Portafolio en Three.js y Cannon.js donde conduces un vehículo a lo largo de una ruta escénica otoñal con curvas, pendientes, cercado delimitador y estaciones interactivas para explorar los proyectos, habilidades e investigaciones de **Jahir Eliecer Sánchez Centella** (Ingeniero en Sistemas Computacionales — UTP Azuero).
+Portafolio profesional desarrollado con Three.js y Cannon.js donde se presenta la trayectoria, proyectos en producción, stack tecnológico e investigaciones de **Jahir Eliecer Sánchez Centella** (Ingeniero en Sistemas Computacionales — UTP Azuero).
 
 ---
 
 ## Características Principales
 
-1. **Recorrido 3D con Físicas Estables (Cannon.js + Three.js)**:
+1. **Entorno y Físicas Estables (Cannon.js + Three.js)**:
    - Carretera escénica curva con colinas, valle intermedio y cercas de madera con colisionadores que delimitan el corredor.
-   - Entorno otoñal poblado con pasto 3D instanciado, árboles variados, arbustos, rocas, troncos, flores silvestres, faroles y hojas flotantes.
+   - Entorno otoñal poblado con pasto instanciado, árboles variados, arbustos, rocas, troncos, flores silvestres, faroles y hojas flotantes.
    - Conducción suave al ras del terreno con inclinación por pendiente, faros proyectados, derrape y bolos tecnológicos derribables.
    - Zoom de cámara controlado con la rueda del ratón y botones en pantalla.
 
@@ -17,7 +17,7 @@ Portafolio en Three.js y Cannon.js donde conduces un vehículo a lo largo de una
 
 3. **Estaciones del Recorrido**:
    - **Arco de Salida & Controles**: Presentación inicial, controles y mapa completo de hitos.
-   - **Zona de Bolos Tecnológicos**: 10 bloques físicos (*Vercel, Cloudflare, SQL Server, Antigravity, Codex, React, Node.js, Python, Linux, Docker*).
+   - **Zona de Bolos Tecnológicos**: 10 bloques físicos (*Vercel, Cloudflare, SQL Server, TypeScript, Firebase, React, Node.js, Python, Linux, Docker*).
    - **Control Ganadero Pro (v2.5)**: [controlganadero-mu.vercel.app](https://controlganadero-mu.vercel.app/)
    - **MiAliado (SIGC)**: [mialiado.click](https://mialiado.click/)
    - **Portal Kelme Latam Hub**: Plataforma mayorista B2B.

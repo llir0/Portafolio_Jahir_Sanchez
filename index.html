@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Jahir Sánchez Centella | Software Architect & Full-Stack Developer</title>
-  <meta name="description" content="Portafolio interactivo 3D de Jahir Sánchez Centella. Conduce por una ruta escénica otoñal descubriendo proyectos, arquitectura cloud y hoja de vida." />
+  <title>Portafolio — Jahir Sánchez Centella</title>
+  <meta name="description" content="Portafolio de Jahir Sánchez Centella. Proyectos en producción, arquitectura de software, desarrollo full-stack y hoja de vida." />
   <meta name="theme-color" content="#180f0a" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Jahir Sánchez Centella | Software Architect & Full-Stack Developer" />
-  <meta property="og:description" content="Portafolio interactivo 3D con recorrido otoñal, proyectos en producción, stack tecnológico y hoja de vida imprimible." />
+  <meta property="og:title" content="Portafolio — Jahir Sánchez Centella" />
+  <meta property="og:description" content="Portafolio de Jahir Sánchez Centella: proyectos en producción, stack tecnológico y hoja de vida." />
 
   <!-- Favicon SVG -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f59e0b'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>" />
@@ -36,23 +36,19 @@
     };
   </script>
 
-  <!-- Estilos del Juego y HUD Otoñal -->
+  <!-- Estilos principales -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="bg-amber-950 text-slate-100 antialiased overflow-hidden select-none">
 
-  <!-- ========================================================
-       1. LIENZO THREE.JS (MUNDO OTOÑAL & FÍSICAS CANNON.JS)
-       ======================================================== -->
+  <!-- Lienzo 3D -->
   <div id="canvas-container"></div>
 
-  <!-- ========================================================
-       2. CAPA DE INTERFAZ DEL JUEGO (HUD ESTILO BRUNO SIMON)
-       ======================================================== -->
+  <!-- HUD principal -->
   <div class="game-hud-layer">
-    <!-- BARRA SUPERIOR: Perfil del Conductor, Velocímetro & Radar -->
+    <!-- Barra superior: perfil, velocimetro y radar -->
     <header class="flex items-start justify-between gap-4">
-      <!-- Tarjeta del Conductor -->
+      <!-- Perfil -->
       <div class="hud-interactive hud-glass px-4 py-2.5 rounded-2xl flex items-center gap-4 border border-amber-500/30">
         <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center font-mono font-black text-white text-base shadow-lg shadow-amber-500/30">
           JS
@@ -62,7 +58,7 @@
             <h1 class="text-sm sm:text-base font-extrabold text-white tracking-tight">Jahir Sánchez Centella</h1>
             <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30 hidden sm:inline-block">5to Año UTP</span>
           </div>
-          <p class="text-[11px] font-mono text-amber-200/80">Software Architect & AI Engineer</p>
+          <p class="text-[11px] font-mono text-amber-200/80">Software Architect & Full-Stack Developer</p>
         </div>
 
         <div class="h-8 w-px bg-amber-900/60 hidden sm:block"></div>
@@ -146,14 +142,14 @@
       </div>
     </header>
 
-    <!-- BARRA INFERIOR: Ruta Lineal (Autopiloto) & Controles -->
+    <!-- Barra inferior: controles -->
     <footer class="flex items-center justify-between gap-3 w-full">
-      <!-- Ayuda de Controles (Desktop) -->
+      <!-- Controles (Desktop) -->
       <div class="controls-helper-box hud-interactive hud-glass px-4 py-2 rounded-xl text-xs font-mono text-amber-200/90 border border-amber-800/60 shadow-lg">
         <strong class="text-amber-300">WASD / Flechas:</strong> Conducir • <strong class="text-amber-300">Espacio:</strong> Freno/Bocina • <strong class="text-amber-300">Ruedita:</strong> Zoom • <strong class="text-amber-300">R:</strong> Reiniciar
       </div>
 
-      <!-- Controles Táctiles para Móviles / Tablets -->
+      <!-- Controles tactiles para moviles -->
       <div class="touch-controls hud-interactive flex items-center gap-2">
         <div class="flex flex-col gap-1.5">
           <div class="flex gap-1.5">
@@ -170,29 +166,23 @@
     </footer>
   </div>
 
-  <!-- ========================================================
-       3. EXPEDIENTE ENRIQUECIDO DE PROYECTO (RICH HUD CARD)
-       (Se despliega al acercarse a cualquier hito con toda la información)
-       ======================================================== -->
+  <!-- Ficha lateral de proyecto -->
   <aside id="hud-project-card" class="hud-glass p-5 rounded-3xl border border-amber-500/40 hidden-hud-card shadow-2xl">
     <div class="flex items-center justify-between border-b border-amber-900/50 pb-2.5 mb-3">
       <span class="text-[11px] font-mono uppercase tracking-wider text-amber-400 font-bold flex items-center gap-1.5">
-        Expediente de Proyecto & Arquitectura
+        Proyecto y Arquitectura
       </span>
       <button id="hud-card-close" class="p-1.5 rounded-lg bg-amber-950/70 hover:bg-amber-900 text-amber-300 hover:text-white transition-colors cursor-pointer" title="Cerrar ficha">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
       </button>
     </div>
 
-    <!-- Contenedor con Scroll Suave para Toda la Información -->
+    <!-- Contenido con scroll del proyecto -->
     <div id="hud-card-body-content">
-      <!-- Inyectado dinámicamente con desglose de arquitectura, problemas, módulos, stack y links -->
     </div>
   </aside>
 
-  <!-- ========================================================
-       4. HOJA DE VIDA COMPLETA & EXPEDIENTES (MODO CV / TEXTO)
-       ======================================================== -->
+  <!-- Vista de hoja de vida -->
   <div id="classic-view-overlay" class="hidden-overlay p-4 sm:p-8 lg:p-12">
     <div class="max-w-5xl mx-auto space-y-8">
       

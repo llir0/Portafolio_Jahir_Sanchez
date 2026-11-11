@@ -1,7 +1,7 @@
 {
   "name": "presentador-de-proyectos-jahir",
   "version": "1.0.0",
-  "description": "Portafolio profesional y agenda animada de proyectos de Jahir Sánchez Centella",
+  "description": "Portafolio profesional y proyectos de Jahir Sánchez Centella",
   "main": "index.html",
   "type": "module",
   "scripts": {
@@ -10,11 +10,11 @@
   },
   "keywords": [
     "portfolio",
-    "agenda",
+    "threejs",
     "software-engineer",
+    "fullstack",
     "cloud",
-    "vercel",
-    "ai-augmented"
+    "vercel"
   ],
   "author": "Jahir Eliecer Sánchez Centella",
   "license": "MIT"
