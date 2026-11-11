@@ -58,24 +58,7 @@ python3 -m http.server 3000
 Abrir en el navegador: `http://localhost:3000`.
 
 ---
-
-## Despliegue en Vercel
-
-El proyecto ya incluye [vercel.json](./vercel.json), [.vercelignore](./.vercelignore) y [.gitignore](./.gitignore) configurados para despliegue estático directo desde la raíz (`.`) con cabeceras de seguridad y caché optimizada:
-
-### Opción A: Desde GitHub + Dashboard de Vercel
-1. Inicializa o sube el repositorio a GitHub:
-   ```bash
-   git init
-   git add .
-   git commit -m "chore: prepare portfolio for Vercel deployment"
-   git branch -M main
-   git remote add origin <URL-DE-TU-REPO>
-   git push -u origin main
-   ```
-2. Entra a [vercel.com](https://vercel.com), haz clic en **Add New Project**, importa tu repositorio y presiona **Deploy** (Vercel detectará automáticamente `vercel.json` sin necesidad de build adicional).
-
-### Opción B: Directamente desde la terminal con Vercel CLI
+minal con Vercel CLI
 ```bash
 npx vercel --prod
 ```
