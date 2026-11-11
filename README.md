@@ -1,6 +1,6 @@
-# Jahir Sánchez Centella — Portafolio Interactivo 3D
+# Jahir Sánchez Centella — Portafolio
 
-Portafolio interactivo 3D en Three.js y Cannon.js donde conduces un vehículo a lo largo de una ruta escénica otoñal con curvas, pendientes, cercado delimitador y estaciones interactivas para explorar los proyectos, habilidades e investigaciones de **Jahir Eliecer Sánchez Centella** (Ingeniero en Sistemas Computacionales — UTP Azuero).
+Portafolio en Three.js y Cannon.js donde conduces un vehículo a lo largo de una ruta escénica otoñal con curvas, pendientes, cercado delimitador y estaciones interactivas para explorar los proyectos, habilidades e investigaciones de **Jahir Eliecer Sánchez Centella** (Ingeniero en Sistemas Computacionales — UTP Azuero).
 
 ---
 
