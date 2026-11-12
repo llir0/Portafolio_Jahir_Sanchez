@@ -40,7 +40,7 @@ Portafolio profesional desarrollado con Three.js y Cannon.js donde se presenta l
 | `S` / `↓` | Frenar / Reversa |
 | `A` / `D` o `←` `→` | Dirección |
 | `Espacio` | Freno de mano / Derrape / Claxon |
-| Ruedita del ratón | Zoom acercar / alejar |
+| Rueda del ratón | Zoom acercar / alejar |
 | `H` | Claxon |
 | `R` | Reiniciar posición |
 | `F12` | Ver resumen de hoja de vida en consola |
